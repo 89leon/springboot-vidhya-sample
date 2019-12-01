@@ -19,9 +19,8 @@ node {
                     sh 'echo "${bodyTemp}"'
     
                     sh "echo Running ${env.BUILD_ID} on ${env.JENKINS_URL}"
-                    emailext body: "A Test EMail:${bodyTemp}" , 
-                                recipientProviders: [[$class: 'DevelopersRecipientProvider'], 
-                                                    [$class: 'RequesterRecipientProvider']],
+                    emailext body: "A Test EMail: ${FILE,path="/target/site/jacoco/index.html"}" , 
+                                recipientProviders: [[$class: 'DevelopersRecipientProvider'],[$class: 'RequesterRecipientProvider']],
                                 mimeType: 'text/html', 
                                 subject: 'Test'
                                 
