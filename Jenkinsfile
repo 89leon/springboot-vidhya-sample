@@ -7,6 +7,7 @@ pipeline {
                 echo 'Building..'
                 withMaven(maven : 'maven3_6_3'){
                     sh 'mvn --version'
+                    step( [ $class: 'JacocoPublisher' ] )
                 }
             }
         }
