@@ -21,7 +21,7 @@ node {
                     //read the data from one of them and attach it to report
                    
                   
-                    emailext body: 'A Test EMail:' + ${bodyTemp}, recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']], subject: 'Test'
+                    emailext body: 'A Test EMail:${bodyTemp}' , recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']], subject: 'Test'
                     
                 }
             //sh 'exit 1'
