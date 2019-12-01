@@ -16,9 +16,9 @@ node {
                     
                     
                     //-------------JACOCO-------------------------------------------------------------------------
-
-                    job = hudson.model.Hudson.instance.getItem("jacoco_test")
-                    build = job.getLastBuild()
+                    job = Jenkins.instance
+                   // job = hudson.model.Hudson.instance.getItem("jacoco_test")
+                   // build = job.getLastBuild()
 
                     //-------------EMAIL---------------------------------------------------------------------
                    // emailext  body: "A Test EMail:${bodyTemp}" , 
