@@ -16,8 +16,8 @@ node {
                     
                     
                     //-------------JACOCO-------------------------------------------------------------------------
-
-                    build = getJobByName("jacoco_test")
+                    def job_data = Jenkins.instance.getItemByFullName("jacoco_test")
+                    //build = getJobByName("jacoco_test").getLastBuild()
                    // job = hudson.model.Hudson.instance.getItem("jacoco_test")
                    // build = job.getLastBuild()
 
