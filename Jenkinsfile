@@ -1,6 +1,6 @@
 node {
     stage('Example') {
-
+        script {
           def bodyTemp = "<h1>HELLO</h1>"
 
         try {
@@ -31,6 +31,7 @@ node {
             echo 'Something failed, I should sound the klaxons!'
            
         }
+    }
     }
 }
 
