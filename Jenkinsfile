@@ -13,6 +13,8 @@ pipeline {
                         sourcePattern: 'src/main/java',
                         exclusionPattern: 'src/test*'
 )
+                    sh 'mvn clean test jacoco:report'
+
                 }
             }
         }
