@@ -1,7 +1,7 @@
 node {
     def bodyTemp = "<h1>HELLO</h1>"
-    def job 
-    def build 
+    def job = null
+    def build = null
     stage('Testing'){
          withMaven(maven : 'maven3_6_3'){
                     jacoco( 
@@ -12,15 +12,15 @@ node {
                     )
 
                    // sh 'mvn clean test jacoco:report'
-
-                    ///var/jenkins_home/workspace/jacoco_test   // JACOCO OUTPUT FOLDER
-                    sh 'cd ./target/site/jacoco'  // here is index.html , jacoco.xml , jacoco.csv
-                    //read the data from one of them and attach it to report
+                    sh 'cd ./target/site/jacoco'  // var/jenkins_home/workspace/jacoco_test   // JACOCO OUTPUT FOLDER here is index.html , jacoco.xml , jacoco.csv
+                    
+                    
+                    //-------------JACOCO-------------------------------------------------------------------------
 
                     job = hudson.model.Hudson.instance.getItem("jacoco_test")
-                    //build = job.getLastBuild()
+                    build = job.getLastBuild()
 
-
+                    //-------------EMAIL---------------------------------------------------------------------
                    // emailext  body: "A Test EMail:${bodyTemp}" , 
                     // emailext    body: '${FILE,path="target/site/jacoco/index.html"}',
                     //             recipientProviders: [[$class: 'DevelopersRecipientProvider'],[$class: 'RequesterRecipientProvider']],
