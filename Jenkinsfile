@@ -1,5 +1,8 @@
 node {
     stage('Example') {
+
+          def bodyTemp = "<h1>HELLO</h1>"
+
         try {
             withMaven(maven : 'maven3_6_3'){
                     sh 'mvn --version'
@@ -16,7 +19,8 @@ node {
                     ///var/jenkins_home/workspace/jacoco_test   // JACOCO OUTPUT FOLDER
                     sh 'cd ./target/site/jacoco'  // here is index.html , jacoco.xml , jacoco.csv
                     //read the data from one of them and attach it to report
-                    def bodyTemp = "<h1>HELLO</h1>"
+                   
+                  
                     emailext body: 'A Test EMail:' + ${bodyTemp}, recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']], subject: 'Test'
                     
                 }
