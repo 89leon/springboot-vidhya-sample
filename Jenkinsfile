@@ -14,7 +14,13 @@ pipeline {
 //                         exclusionPattern: 'src/test*'
 // )
                     sh 'mvn clean test jacoco:report'
+                    sh  '''
+                        ls
+                        pwd
+                        
 
+
+                    '''
                 }
             }
         }
