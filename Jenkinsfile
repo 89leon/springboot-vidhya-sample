@@ -16,6 +16,7 @@ node {
                     //-------------JACOCO-------------------------------------------------------------------------
                     def job = Hudson.instance.getItem('jacoco_test').getLastBuild() // WORKS (returned last build ex: #85)
                     def jdata = job.getAction(hudson.plugins.jacoco.JacocoBuildAction.class)
+                    echo "asdasd ${jdata}"
                     //def job_data = Jenkins.instance.getItemByFullName("jacoco_test")
                     //def build_data = getJobByName("jacoco_test").getLastBuild()
                    // job = hudson.model.Hudson.instance.getItem("jacoco_test")
