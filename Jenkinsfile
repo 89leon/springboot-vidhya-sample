@@ -23,7 +23,7 @@ node {
                                 recipientProviders: [[$class: 'DevelopersRecipientProvider'], 
                                                     [$class: 'RequesterRecipientProvider']],
                                 mimeType: 'text/html', 
-                                subject: 'Test' Status: currentBuild.result 
+                                subject: 'Test'
                                 
                     
                 }
