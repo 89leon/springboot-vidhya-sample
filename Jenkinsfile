@@ -17,9 +17,8 @@ node {
                     sh 'cd ./target/site/jacoco'  // here is index.html , jacoco.xml , jacoco.csv
                     //read the data from one of them and attach it to report
 
-                    echo "${currentBuild}"
-                    job = hudson.model.Hudson.instance.getItem("jacoco_test")
-                    build = job.getLastBuild()
+                    //job = hudson.model.Hudson.instance.getItem("jacoco_test")
+                    //build = job.getLastBuild()
 
 
                    // emailext  body: "A Test EMail:${bodyTemp}" , 
@@ -32,7 +31,7 @@ node {
                 }
     }
     echo "ENV ${env}"
-    echo "Running ${env.BUILD_ID} on ${env.JENKINS_URL}"
+    echo "Running ${env} on ${env.JENKINS_URL}"
 }
 
 
