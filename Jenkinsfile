@@ -16,9 +16,10 @@ node {
                     ///var/jenkins_home/workspace/jacoco_test   // JACOCO OUTPUT FOLDER
                     sh 'cd ./target/site/jacoco'  // here is index.html , jacoco.xml , jacoco.csv
                     //read the data from one of them and attach it to report
-                   
-                  
-                    emailext body: 'A Test EMail:${bodyTemp}' , recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']], subject: 'Test'
+                    sh 'echo "${bodyTemp}"'
+    
+                    sh "echo Running ${env.BUILD_ID} on ${env.JENKINS_URL}"
+                    emailext body: "A Test EMail:${bodyTemp}" , recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']], subject: 'Test'
                     
                 }
     }
