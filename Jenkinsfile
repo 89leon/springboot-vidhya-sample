@@ -34,7 +34,7 @@ node {
     echo "Running ${env} on ${env.JENKINS_URL}"
 }
 
-from jenkinsapi.jenkins import Jenkins
+
 
 
 def getJobByName(String jobName){
