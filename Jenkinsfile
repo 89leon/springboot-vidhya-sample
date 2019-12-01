@@ -8,8 +8,9 @@ node {
                         classPattern: 'target/classes',
                         sourcePattern: 'src/main/java',
                         exclusionPattern: 'src/test*'
+                    )
                    // sh 'mvn clean test jacoco:report'
-                  
+
                     ///var/jenkins_home/workspace/jacoco_test   // JACOCO OUTPUT FOLDER
                     sh 'cd ./target/site/jacoco'  // here is index.html , jacoco.xml , jacoco.csv
                     //read the data from one of them and attach it to report
