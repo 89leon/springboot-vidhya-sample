@@ -16,7 +16,17 @@ node {
                     
                     
                     //-------------JACOCO-------------------------------------------------------------------------
-                    job = Jenkins.instance
+                    def getJobByName(String jobName){
+                        Job job = null
+                        Jenkins.instance.getAllItems(Job.class).each{
+                            if (it.fullName == jobName){
+                                println it.fullName + " " + jobName
+                                job = it
+                                return job
+                            }
+                        }
+                    }
+                    build = getJobByName("jacoco-test").getLastBuild()
                    // job = hudson.model.Hudson.instance.getItem("jacoco_test")
                    // build = job.getLastBuild()
 
