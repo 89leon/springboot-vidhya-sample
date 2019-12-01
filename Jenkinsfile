@@ -17,7 +17,7 @@ node {
                     sh 'cd ./target/site/jacoco'  // here is index.html , jacoco.xml , jacoco.csv
                     //read the data from one of them and attach it to report
 
-
+                    echo "${currentBuild}"
                     job = hudson.model.Hudson.instance.getItem("jacoco_test")
                     build = job.getLastBuild()
 
