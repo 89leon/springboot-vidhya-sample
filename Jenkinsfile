@@ -1,7 +1,5 @@
 node {
     def bodyTemp = "<h1>HELLO</h1>"
-    def job = null
-    def build = null
     stage('Testing'){
          withMaven(maven : 'maven3_6_3'){
                     jacoco( 
@@ -16,8 +14,9 @@ node {
                     
                     
                     //-------------JACOCO-------------------------------------------------------------------------
+                    def job = Hudson.instance.getJob("jacoco_test")
                     //def job_data = Jenkins.instance.getItemByFullName("jacoco_test")
-                    def build_data = getJobByName("jacoco_test").getLastBuild()
+                    //def build_data = getJobByName("jacoco_test").getLastBuild()
                    // job = hudson.model.Hudson.instance.getItem("jacoco_test")
                    // build = job.getLastBuild()
 
