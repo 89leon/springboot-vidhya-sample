@@ -7,7 +7,12 @@ pipeline {
                 echo 'Building..'
                 withMaven(maven : 'maven3_6_3'){
                     sh 'mvn --version'
-                    step( [ $class: 'JacocoPublisher' ] )
+                    jacoco( 
+                        execPattern: 'target/*.exec',
+                        classPattern: 'target/classes',
+                        sourcePattern: 'src/main/java',
+                        exclusionPattern: 'src/test*'
+)
                 }
             }
         }
