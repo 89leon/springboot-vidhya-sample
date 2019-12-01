@@ -15,7 +15,7 @@ node {
                     //read the data from one of them and attach it to report
                     job = hudson.model.Hudson.instance.getItem("jacoco_test")
                     build = job.getLastBuild()
-                    sh 'echo "${bodyTemp}"'
+                    //sh 'echo "${bodyTemp}"'
                     sh "echo Running ${env.BUILD_ID} on ${env.JENKINS_URL}"
                    // emailext  body: "A Test EMail:${bodyTemp}" , 
                     emailext    body: '${FILE,path="target/site/jacoco/index.html"}',
