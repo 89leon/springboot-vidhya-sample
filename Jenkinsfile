@@ -7,12 +7,12 @@ pipeline {
                 echo 'Building..'
                 withMaven(maven : 'maven3_6_3'){
                     sh 'mvn --version'
-                    jacoco( 
-                        execPattern: 'target/*.exec',
-                        classPattern: 'target/classes',
-                        sourcePattern: 'src/main/java',
-                        exclusionPattern: 'src/test*'
-)
+//                     jacoco( 
+//                         execPattern: 'target/*.exec',
+//                         classPattern: 'target/classes',
+//                         sourcePattern: 'src/main/java',
+//                         exclusionPattern: 'src/test*'
+// )
                     sh 'mvn clean test jacoco:report'
 
                 }
