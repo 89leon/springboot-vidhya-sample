@@ -14,11 +14,12 @@ node {
                     report.each{ k, v -> println "${k}:${v}" }
 
                     //-------------EMAIL---------------------------------------------------------------------
-                     emailext    body: "A Test EMail:" , 
-                     //emailext    body: '${FILE,path="target/site/jacoco/index.html"}',
-                                recipientProviders: [[$class: 'DevelopersRecipientProvider'],[$class: 'RequesterRecipientProvider']],
-                              //  mimeType: 'text/html', 
-                                subject: 'Test & Coverage Report'
+                    emailext (
+    subject: "STARTED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'",
+    body: """<p>STARTED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]':</p>
+        <p>Check console output at &QUOT;<a href='${env.BUILD_URL}'>${env.JOB_NAME} [${env.BUILD_NUMBER}]</a>&QUOT;</p>""",
+    recipientProviders: [[$class: 'DevelopersRecipientProvider']]
+)
                                 
                     
                 }
