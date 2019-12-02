@@ -37,7 +37,6 @@
 
 node {
     def bodyTemp = "<h1>HELLO</h1>"
-    def job 
     def build 
     stage('Testing'){
          withMaven(maven : 'maven3_6_3'){
@@ -49,14 +48,14 @@ node {
                     )
                     //JACOCO
                     //-------------JACOCO-------------------------------------------------------------------------
-                    //def currentBuild = Hudson.instance.getItem('jacoco_test').getLastBuild() // WORKS (returned last build ex: #85)
-                    //def report = currentBuild.getAction(hudson.plugins.jacoco.JacocoBuildAction.class) // WORKS
+                    def currentBuild = Hudson.instance.getItem('jacoco_test').getLastBuild() // WORKS (returned last build ex: #85)
+                    def report = currentBuild.getAction(hudson.plugins.jacoco.JacocoBuildAction.class) // WORKS
                     //report.each{ k, v -> println "${k}:${v}" }
                     //EMAIL
-                    emailext  body: "A Test EMail:${bodyTemp}" , 
-                                recipientProviders: [[$class: 'DevelopersRecipientProvider'],[$class: 'RequesterRecipientProvider']],
-                                mimeType: 'text/html', 
-                                subject: 'Test'
+                    // emailext  body: "A Test EMail:${bodyTemp}" , 
+                    //             recipientProviders: [[$class: 'DevelopersRecipientProvider'],[$class: 'RequesterRecipientProvider']],
+                    //             mimeType: 'text/html', 
+                    //             subject: 'Test'
                                 
                     
                 }
