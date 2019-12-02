@@ -13,9 +13,11 @@ node {
                     def report = currentBuild.getAction(hudson.plugins.jacoco.JacocoBuildAction.class) // WORKS
                     report.each{ k, v -> println "${k}:${v}" }
 
+
+                     sh 'cd ./target/site/jacoco' 
                     //-------------EMAIL---------------------------------------------------------------------
                    // emailext    body: '${FILE,path="target/site/jacoco/index.html"}',
-                     emailext  body: "A Test EMail:${bodyTemp}" , 
+                      emailext body: '${FILE,path="target/site/jacoco/index.html"}',
                                 recipientProviders: [[$class: 'DevelopersRecipientProvider'],[$class: 'RequesterRecipientProvider']],
                                 mimeType: 'text/html', 
                                 subject: 'Test'
