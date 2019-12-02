@@ -49,7 +49,7 @@ node {
                     )
                     //JACOCO
                     //-------------JACOCO-------------------------------------------------------------------------
-                    def currentBuild = Hudson.instance.getItem('jacoco_test').getLastBuild() // WORKS (returned last build ex: #85)
+                    //def currentBuild = Hudson.instance.getItem('jacoco_test').getLastBuild() // WORKS (returned last build ex: #85)
                     //def report = currentBuild.getAction(hudson.plugins.jacoco.JacocoBuildAction.class) // WORKS
                     //report.each{ k, v -> println "${k}:${v}" }
                     //EMAIL
