@@ -36,8 +36,6 @@
 
 
 node {
-    def bodyTemp = "<h1>HELLO</h1>"
-    def build 
     stage('Testing'){
          withMaven(maven : 'maven3_6_3'){
                     jacoco( 
