@@ -14,8 +14,8 @@ node {
                     report.each{ k, v -> println "${k}:${v}" }
 
                     //-------------EMAIL---------------------------------------------------------------------
-                  //   emailext  body: "A Test EMail:${bodyTemp}" , 
-                    emailext    body: '${FILE,path="target/site/jacoco/index.html"}',
+                   // emailext    body: '${FILE,path="target/site/jacoco/index.html"}',
+                     emailext  body: "A Test EMail:${bodyTemp}" , 
                                 recipientProviders: [[$class: 'DevelopersRecipientProvider'],[$class: 'RequesterRecipientProvider']],
                                 mimeType: 'text/html', 
                                 subject: 'Test'
