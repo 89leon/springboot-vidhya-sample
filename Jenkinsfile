@@ -16,8 +16,8 @@ node {
 
                      sh 'cd ./target/site/jacoco' 
                     //-------------EMAIL---------------------------------------------------------------------
-                   // emailext    body: '${FILE,path="target/site/jacoco/index.html"}',
-                      emailext body: '${FILE,path="target/site/jacoco/index.html"}',
+                    emailext    body: 'asd',
+                    //  emailext body: '${FILE,path="target/site/jacoco/index.html"}',
                                 recipientProviders: [[$class: 'DevelopersRecipientProvider'],[$class: 'RequesterRecipientProvider']],
                                 mimeType: 'text/html', 
                                 subject: 'Test'
