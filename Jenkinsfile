@@ -41,7 +41,7 @@ node {
     def build 
     stage('Testing'){
          withMaven(maven : 'maven3_6_3'){
-                    sh 'mvn --version'
+                   // sh 'mvn --version'
                     jacoco( 
                         execPattern: 'target/*.exec',
                         classPattern: 'target/classes',
@@ -58,8 +58,8 @@ node {
                     //build = job.getLastBuild()
 
 
-                   // emailext  body: "A Test EMail:${bodyTemp}" , 
-                    emailext    body: '${FILE,path="target/site/jacoco/index.html"}',
+                    emailext  body: "A Test EMail:${bodyTemp}" , 
+                   // emailext    body: '${FILE,path="target/site/jacoco/index.html"}',
                                 recipientProviders: [[$class: 'DevelopersRecipientProvider'],[$class: 'RequesterRecipientProvider']],
                                 mimeType: 'text/html', 
                                 subject: 'Test'
