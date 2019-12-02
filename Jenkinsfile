@@ -47,8 +47,12 @@ node {
                         sourcePattern: 'src/main/java',
                         exclusionPattern: 'src/test*'
                     )
-
-
+                    //JACOCO
+                    //-------------JACOCO-------------------------------------------------------------------------
+                    def currentBuild = Hudson.instance.getItem('jacoco_test').getLastBuild() // WORKS (returned last build ex: #85)
+                    def report = currentBuild.getAction(hudson.plugins.jacoco.JacocoBuildAction.class) // WORKS
+                    report.each{ k, v -> println "${k}:${v}" }
+                    //EMAIL
                     emailext  body: "A Test EMail:${bodyTemp}" , 
                                 recipientProviders: [[$class: 'DevelopersRecipientProvider'],[$class: 'RequesterRecipientProvider']],
                                 mimeType: 'text/html', 
@@ -57,8 +61,6 @@ node {
                     
                 }
     }
-    echo "ENV ${env}"
-    echo "Running ${env} on ${env.JENKINS_URL}"
 }
 
 
