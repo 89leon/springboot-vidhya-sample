@@ -8,45 +8,23 @@ node {
                         sourcePattern: 'src/main/java',
                         exclusionPattern: 'src/test*'
                     )
-
-                   // sh 'mvn clean test jacoco:report'
-                    sh 'cd ./target/site/jacoco'  // var/jenkins_home/workspace/jacoco_test   // JACOCO OUTPUT FOLDER here is index.html , jacoco.xml , jacoco.csv
-                    
-                    
                     //-------------JACOCO-------------------------------------------------------------------------
-                    def job = Hudson.instance.getItem('jacoco_test').getLastBuild() // WORKS (returned last build ex: #85)
-                    def jdata = job.getAction(hudson.plugins.jacoco.JacocoBuildAction.class) // WORKS
-                    echo "asdasd ${jdata}"
-                    jdata.each{ k, v -> println "keys& values ${k}:${v}" }
-                    //def job_data = Jenkins.instance.getItemByFullName("jacoco_test")
-                    //def build_data = getJobByName("jacoco_test").getLastBuild()
-                   // job = hudson.model.Hudson.instance.getItem("jacoco_test")
-                   // build = job.getLastBuild()
+                    def currentBuild = Hudson.instance.getItem('jacoco_test').getLastBuild() // WORKS (returned last build ex: #85)
+                    def report = job.getAction(hudson.plugins.jacoco.JacocoBuildAction.class) // WORKS
+                    report.each{ k, v -> println "${k}:${v}" }
 
                     //-------------EMAIL---------------------------------------------------------------------
-                   // emailext  body: "A Test EMail:${bodyTemp}" , 
+                    emailext    body: "A Test EMail:${report.line}" , 
                     // emailext    body: '${FILE,path="target/site/jacoco/index.html"}',
-                    //             recipientProviders: [[$class: 'DevelopersRecipientProvider'],[$class: 'RequesterRecipientProvider']],
-                    //             mimeType: 'text/html', 
-                    //             subject: 'Test'
+                                recipientProviders: [[$class: 'DevelopersRecipientProvider'],[$class: 'RequesterRecipientProvider']],
+                                mimeType: 'text/html', 
+                                subject: 'Test & Coverage Report'
                                 
                     
                 }
     }
-    echo "ENV ${env}"
-    echo "Running ${env} on ${env.JENKINS_URL}"
 }
 
 
 
 
-def getJobByName(String jobName){
-    Job job = null
-    Jenkins.instance.getAllItems(Job.class).each{
-        if (it.fullName == jobName){
-            println it.fullName + " " + jobName
-            job = it
-            return job
-        }
-    }
-}
