@@ -17,7 +17,7 @@ node {
                      emailext    body: "A Test EMail:" , 
                      //emailext    body: '${FILE,path="target/site/jacoco/index.html"}',
                                 recipientProviders: [[$class: 'DevelopersRecipientProvider'],[$class: 'RequesterRecipientProvider']],
-                                mimeType: 'text/html', 
+                              //  mimeType: 'text/html', 
                                 subject: 'Test & Coverage Report'
                                 
                     
